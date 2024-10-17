@@ -2,19 +2,18 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [ master ]
   workflow_dispatch:
 
-jobs:
+jobs: 
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest 
 
-    steps:
-      - uses: actions/checkout@v3
-      - name: Say Hello
-        run: echo "Hello, world!"
+    steps: 
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Add additional actions
+      - name: Build and test
         run: |
-          echo "Add other actions to build,"
-          echo "test, and deploy your project."
+          dotnet build
+          dotnet test
